@@ -1,0 +1,30 @@
+# Установка временной зоны
+SetEnv TZ Europe/Moscow
+
+# Установка кодировки страниц сайта
+AddDefaultCharset UTF-8
+
+# Включаем модуль Mod_Rewrite
+RewriteEngine On
+
+# Редирект с домена www. на без www.
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# Редирект с http на https
+RewriteCond %{ENV:HTTPS} !on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Установка главной страницы сайта
+DirectoryIndex public/index.php
+
+# Запрет на просмотр директорий
+Options All -Indexes
+
+# Порядок обработки разрешающих и запрещающих директив
+Order Deny,Allow
+
+# Запрет на доступ к файлам определённого типа
+<FilesMatch ".(htaccess|txt|gitignore|json|phar|env|example)$">
+    Deny from all
+</FilesMatch>

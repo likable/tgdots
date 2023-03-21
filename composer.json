@@ -1,0 +1,13 @@
+{
+    "require": {
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-pdo": "*",
+        "symfony/dotenv": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    }
+}
