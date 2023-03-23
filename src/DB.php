@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Src;
 
 use PDO;
@@ -10,7 +12,7 @@ final class DB
     public const DB_NAME = 'anekdot';
     public const DB_CHARSET = 'utf8';
 
-    public static function getPDO()
+    public static function getPDO(): PDO
     {
         $dotenv = new Dotenv(true);
         $dotenv->load(__DIR__ . '/../.env');
