@@ -36,9 +36,9 @@ final class Telegram
         curl_close($this->ch);
     }
 
-    public function getOwnerId()
+    public function getOwnerId(): int
     {
-        return $this->ownerId;
+        return (int) $this->ownerId;
     }
 
     /** Отправка произвольной команды методом GET */
@@ -77,9 +77,9 @@ final class Telegram
     }
 
     /** Установить вебхук */
-    public function setHook(string $pathToScrypt)
+    public function setHook()
     {
-        return $this->sendGetCommand("/setWebhook?url={$pathToScrypt}");
+        return $this->sendGetCommand("/setWebhook?url={$this->pathToScrypt}");
     }
 
     // ----------[ POST commands ]----------
