@@ -30,7 +30,6 @@ final class DB
             PDO::ATTR_EMULATE_PREPARES   => false,
         ];
 
-        // TODO: try-catch -> log
         return new PDO($dsn, $username, $password, $options);
     }
 }
